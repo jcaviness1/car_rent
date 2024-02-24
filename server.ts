@@ -40,6 +40,10 @@ export function app(): express.Express {
       .catch((err) => next(err));
   });
 
+  const MockBrowser = require('mock-browser').mocks.MockBrowser;
+const mock = new MockBrowser();
+global['window'] = mock.getWindow();
+
   return server;
 }
 
